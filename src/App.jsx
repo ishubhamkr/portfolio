@@ -6,6 +6,8 @@ const PROFILE_AVATAR_URL = 'data:image/webp;base64,UklGRkJvAABXRUJQVlA4WAoAAAAQA
 const OPTUM_LOGO_URL = 'https://www.optum.com/content/dam/optum4/images/logos/optum-logo-ora-rgb1.svg';
 const IIITM_LOGO_URL = 'https://www.iiitm.ac.in/public/header_image/1770627993_logo.png';
 const WBUT_LOGO_URL = 'https://www.makautwb.ac.in/notun/images/logo.png';
+const AWS_LOGO_URL = 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg';
+const SERVICENOW_LOGO_URL = 'https://upload.wikimedia.org/wikipedia/commons/5/57/ServiceNow_logo.svg';
 
 const DEVICON = (name, file = `${name}-original.svg`) =>
   `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${name}/${file}`;
@@ -121,7 +123,7 @@ const TECH_GROUPS = [
     note: 'End-to-end cloud architecture, private connectivity, IaC and automated delivery.',
     items: [
       { name: 'Microsoft Azure', logo: DEVICON('azure') },
-      { name: 'AWS', logo: DEVICON('amazonwebservices', 'amazonwebservices-original-wordmark.svg') },
+      { name: 'AWS', logo: AWS_LOGO_URL },
       { name: 'Terraform', logo: DEVICON('terraform') },
       { name: 'Docker', logo: DEVICON('docker') },
       { name: 'Kubernetes', logo: DEVICON('kubernetes') },
@@ -137,7 +139,7 @@ const TECH_GROUPS = [
       { name: 'Apache Kafka', logo: DEVICON('apachekafka') },
       { name: 'MongoDB', logo: DEVICON('mongodb') },
       { name: 'MySQL', logo: DEVICON('mysql') },
-      { name: 'ServiceNow', logo: SIMPLE_ICON('servicenow', '81B5A1') },
+      { name: 'ServiceNow', logo: SERVICENOW_LOGO_URL },
       { name: 'Splunk', logo: SIMPLE_ICON('splunk', 'ffffff') },
       { name: 'Grafana', logo: DEVICON('grafana') },
       { name: 'New Relic', logo: SIMPLE_ICON('newrelic', '1CE783') },
@@ -148,13 +150,13 @@ const TECH_GROUPS = [
     title: 'LLM, AI & Secure Delivery',
     note: 'Grounded AI systems supported by secure SDLC, identity and quality automation.',
     items: [
-      { name: 'OpenAI', logo: SIMPLE_ICON('openai', 'ffffff') },
-      { name: 'LangChain', logo: SIMPLE_ICON('langchain', 'ffffff') },
+      { name: 'OpenAI', logo: SIMPLE_ICON('openai', '111827') },
+      { name: 'LangChain', logo: SIMPLE_ICON('langchain', '1C3C3C') },
       { name: 'Azure AI', logo: DEVICON('azure') },
-      { name: 'GitHub Copilot', logo: SIMPLE_ICON('githubcopilot', 'ffffff') },
-      { name: 'OWASP', logo: SIMPLE_ICON('owasp', 'ffffff') },
+      { name: 'GitHub Copilot', logo: SIMPLE_ICON('githubcopilot', '111827') },
+      { name: 'OWASP', logo: SIMPLE_ICON('owasp', '111827') },
       { name: 'SonarQube', logo: SIMPLE_ICON('sonarqubeserver', '4E9BCD') },
-      { name: 'Prisma Cloud', logo: SIMPLE_ICON('prisma', 'ffffff') },
+      { name: 'Prisma Cloud', logo: SIMPLE_ICON('prisma', '0C344B') },
       { name: 'HashiCorp Vault', logo: SIMPLE_ICON('vault', 'FFEC6E') },
     ],
   },
@@ -321,7 +323,7 @@ const CERTIFICATIONS = [
     issuer: 'Amazon Web Services',
     meta: 'Issued Jan 2026 · Expires Jan 2029',
     href: 'https://www.credly.com/badges/25fc2b7a-686d-4e8a-8bf8-e2ed30814de0/linked_in_profile',
-    logo: SIMPLE_ICON('amazonwebservices', 'FF9900'),
+    logo: AWS_LOGO_URL,
     category: 'Cloud',
     accent: 'aws',
     wideLogo: true,
@@ -371,7 +373,7 @@ const CERTIFICATIONS = [
     issuer: 'Coursera',
     meta: 'Amazon S3 object storage fundamentals',
     href: 'https://www.coursera.org/account/accomplishments/certificate/C2MFU7WWF39U',
-    logo: SIMPLE_ICON('amazons3', '569A31'),
+    logo: AWS_LOGO_URL,
     issuerLogo: SIMPLE_ICON('coursera', '0056D2'),
     issuerLogoAlt: 'Coursera',
     category: 'Cloud',
@@ -1162,7 +1164,7 @@ function StackPage() {
             { name: 'React', logo: DEVICON('react'), className: 'orbit-logo--3' },
             { name: 'Python', logo: DEVICON('python'), className: 'orbit-logo--4' },
             { name: 'FastAPI', logo: DEVICON('fastapi'), className: 'orbit-logo--5' },
-            { name: 'LLMs', logo: SIMPLE_ICON('openai', 'ffffff'), className: 'orbit-logo--6' },
+            { name: 'Spring Boot', logo: DEVICON('spring'), className: 'orbit-logo--6' },
           ].map((item) => (
             <span key={item.name} className={`orbit-logo ${item.className}`}>
               <Logo src={item.logo} alt={item.name} fallback={item.name.slice(0, 2)} />
@@ -1458,7 +1460,7 @@ export default function App() {
     const handleHashChange = () => {
       setRoute(readRoute());
       setMenuOpen(false);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
