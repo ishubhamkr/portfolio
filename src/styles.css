@@ -46,7 +46,7 @@ html {
   min-width: 320px;
   min-height: 100%;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   background: var(--bg-deep);
 }
 
@@ -4516,5 +4516,27 @@ a,
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Targeted logo visibility + scrolling fixes */
+.tech-card__logo img[alt="ServiceNow"] {
+  width: 108px;
+  max-width: none;
+}
+.tech-card:has(.tech-card__logo img[alt="ServiceNow"]) .tech-card__logo {
+  width: 124px;
+  padding-inline: 10px;
+}
+.credential-card__logo img[alt="AWS Certified Cloud Practitioner"],
+.credential-card__logo img[alt="AWS S3 Basics"] {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@media (max-width: 760px) {
+  html, body {
+    overscroll-behavior-y: auto;
+    touch-action: pan-y;
   }
 }
