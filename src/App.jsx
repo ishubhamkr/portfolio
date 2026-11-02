@@ -381,6 +381,45 @@ function Icon({ name, size = 20, strokeWidth = 1.8, className = '' }) {
   return <svg {...common}>{icons[name] || icons.code}</svg>;
 }
 
+
+function LanguageMark({ name }) {
+  const common = { viewBox: '0 0 64 64', role: 'img', 'aria-label': name };
+  if (name === 'Java') return (
+    <svg {...common} className="language-mark language-mark--java">
+      <path d="M22 42c7 4 21 4 28-1M20 35c8 4 22 4 30-1M24 49c6 3 18 3 24 0" />
+      <path d="M29 27c-6 5 4 7 2 12M36 17c-8 6 6 8 0 14M42 11c-7 6 4 7 0 12" />
+      <path d="M17 31c2 15 7 21 18 21s16-6 18-21" />
+    </svg>
+  );
+  if (name === 'Python') return (
+    <svg {...common} className="language-mark language-mark--python">
+      <path d="M14 29V18c0-7 5-11 12-11h8c7 0 10 4 10 10v12H25c-7 0-11 4-11 10v4" />
+      <path d="M50 35v11c0 7-5 11-12 11h-8c-7 0-10-4-10-10V35h19c7 0 11-4 11-10v-4" />
+      <circle cx="26" cy="16" r="2.2" fill="currentColor" stroke="none" />
+      <circle cx="38" cy="48" r="2.2" fill="currentColor" stroke="none" />
+    </svg>
+  );
+  if (name === 'C++') return (
+    <svg {...common} className="language-mark language-mark--cpp">
+      <path d="M32 7 52 18v28L32 57 12 46V18L32 7Z" />
+      <path d="M36 24c-2-3-5-5-9-5-7 0-12 5-12 13s5 13 12 13c4 0 7-2 9-5" />
+      <path d="M39 29h12M45 23v12M42 38h10M47 33v10" />
+    </svg>
+  );
+  if (name === 'JavaScript') return (
+    <svg {...common} className="language-mark language-mark--js">
+      <rect x="8" y="8" width="48" height="48" rx="8" />
+      <path d="M31 25v17c0 5-3 8-8 8-3 0-5-1-7-3M48 28c-2-2-4-3-7-3-4 0-7 2-7 5 0 4 3 5 7 6 4 1 7 2 7 6 0 4-3 7-8 7-4 0-7-1-9-4" />
+    </svg>
+  );
+  return (
+    <svg {...common} className="language-mark language-mark--sql">
+      <ellipse cx="32" cy="15" rx="18" ry="8" />
+      <path d="M14 15v14c0 4 8 8 18 8s18-4 18-8V15M14 29v14c0 4 8 8 18 8s18-4 18-8V29" />
+    </svg>
+  );
+}
+
 function Logo({ src, alt, fallback }) {
   const [failed, setFailed] = useState(false);
   if (failed || !src) return <span className="logo-fallback" aria-label={alt}>{fallback || alt.slice(0, 2).toUpperCase()}</span>;
@@ -417,7 +456,7 @@ function Header({ route, menuOpen, setMenuOpen }) {
       <header className="site-header">
         <a className="brand" href="#/home" aria-label="Shubham Kumar home">
           <span className="brand__avatar-wrap">
-            <img className="brand__avatar" src={GITHUB_AVATAR_URL} alt="Shubham Kumar GitHub profile" width="96" height="96" />
+            <img className="brand__avatar" src={PHOTO_URL} alt="Shubham Kumar" width="96" height="96" />
             <span className="brand__avatar-ring" aria-hidden="true" />
           </span>
           <span className="brand__copy">
@@ -726,7 +765,22 @@ function StackPage() {
       description="Technologies used across AI services, Azure infrastructure, secure applications, data flows, delivery automation and production operations."
     >
       <section className="stack-intro panel">
-        <div className="stack-orbit" aria-hidden="true"><i /><i /><span><Icon name="layers" size={32} /><strong>LLM + Azure</strong><small>End-to-end engineering</small></span><b className="orbit-dot orbit-dot--1">AI</b><b className="orbit-dot orbit-dot--2">AZ</b><b className="orbit-dot orbit-dot--3">TF</b><b className="orbit-dot orbit-dot--4">API</b></div>
+        <div className="language-orbit" aria-label="Programming languages">
+          <div className="language-orbit__ring language-orbit__ring--outer" />
+          <div className="language-orbit__ring language-orbit__ring--inner" />
+          <div className="language-orbit__center">
+            <Icon name="code" size={34} />
+            <strong>Programming<br />Languages</strong>
+            <small>Core engineering foundation</small>
+          </div>
+          <div className="language-orbit__track">
+            {['Java', 'Python', 'C++', 'JavaScript', 'SQL'].map((language, index) => (
+              <span className={`language-orbit__node language-orbit__node--${index + 1}`} key={language}>
+                <span className="language-orbit__node-inner"><LanguageMark name={language} /><small>{language}</small></span>
+              </span>
+            ))}
+          </div>
+        </div>
         <div><p className="mini-kicker">How the stack connects</p><h2>Model intelligence, secure APIs, cloud infrastructure and production signals.</h2><p>I connect retrieval workflows to Python and FastAPI services, Azure Functions and Web Apps, private networking, Terraform delivery and enterprise Java systems.</p><div className="tag-row tag-row--large">{featured.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
       </section>
 
