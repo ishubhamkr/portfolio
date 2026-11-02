@@ -856,7 +856,31 @@ function ContactPage() {
         </section>
 
         <aside className="contact-profile panel">
-          <div className="contact-profile__image"><img src={PHOTO_URL} alt="Shubham Kumar" /></div>
+          <div className="contact-profile__image">
+            <div className="code-rain" aria-hidden="true">
+              {[
+                'public class Engineer {',
+                'def resolve_incident(ctx):',
+                'List<String> signals = logs;',
+                'for incident in incidents:',
+                'if (secure && reliable) {',
+                'return grounded_response;',
+                'async def retrieve_context():',
+                'Map<String, Object> telemetry;',
+                'while (service.isHealthy())',
+                'context = vector_store.search(q)',
+                'try { deploy(); } catch (e) {',
+                'model.invoke(prompt, context)',
+                '@RestController',
+                'from fastapi import FastAPI',
+                'terraform apply --auto-approve',
+                'print("production ready")',
+              ].map((line, index) => (
+                <span key={`${line}-${index}`} style={{ '--i': index }}>{line}</span>
+              ))}
+            </div>
+            <img src={PHOTO_URL} alt="Shubham Kumar" />
+          </div>
           <div><small>Engineering profile</small><h2>Shubham Kumar</h2><p>Software Engineer Lead · Azure + AI</p><span><Icon name="location" size={15} />Noida, India</span></div>
         </aside>
       </div>

@@ -4265,3 +4265,86 @@ html, body { overscroll-behavior-y: auto; }
     height: 30px;
   }
 }
+
+/* Contact portrait: continuous code rain behind the workstation image. */
+.contact-profile__image {
+  isolation: isolate;
+}
+
+.code-rain {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: .42;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 86%, transparent 100%);
+}
+
+.code-rain::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(7,8,12,.58), transparent 20%, transparent 80%, rgba(7,8,12,.58));
+}
+
+.code-rain span {
+  --lane: calc((var(--i) * 37) % 94);
+  position: absolute;
+  top: -52px;
+  left: calc(var(--lane) * 1%);
+  display: block;
+  width: max-content;
+  max-width: 230px;
+  color: rgba(207, 255, 72, .72);
+  font: 600 clamp(8px, .62vw, 10px)/1.35 "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  text-shadow: 0 0 12px rgba(207,255,72,.12);
+  will-change: transform, opacity;
+  transform: translate3d(-50%, -90px, 0);
+  animation: contactCodeFall calc(8.5s + (var(--i) % 6) * .9s) linear infinite;
+  animation-delay: calc(var(--i) * -.83s);
+}
+
+.code-rain span:nth-child(3n + 2) {
+  color: rgba(91, 226, 255, .58);
+}
+
+.code-rain span:nth-child(4n) {
+  color: rgba(141, 132, 255, .55);
+}
+
+.contact-profile__image > img {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes contactCodeFall {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -90px, 0);
+  }
+  9% { opacity: .88; }
+  84% { opacity: .5; }
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, 520px, 0);
+  }
+}
+
+@media (max-width: 760px) {
+  .code-rain { opacity: .28; }
+  .code-rain span:nth-child(even) { display: none; }
+  .code-rain span { animation-duration: 11s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .code-rain span {
+    animation: none !important;
+    opacity: .22;
+    transform: translate3d(-50%, calc((var(--i) + 1) * 28px), 0);
+  }
+}
