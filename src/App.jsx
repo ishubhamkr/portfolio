@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import './styles.css';
 
-const PHOTO_URL = 'https://raw.githubusercontent.com/ishubhamkr/portfolio/refs/heads/main/images/shubham_kumar.png';
+const PHOTO_URL = `${import.meta.env.BASE_URL}images/shubham_kumar.png`;
 const RESUME_URL = 'https://raw.githubusercontent.com/ishubhamkr/portfolio/refs/heads/main/Shubham_Kumar_Resume.pdf';
 
 const DEVICON = (name, file = `${name}-original.svg`) =>
@@ -503,7 +503,7 @@ function VisualBoard() {
       <div className="visual-board__monogram" aria-hidden="true">SK</div>
       <div className="visual-board__status"><i />Production systems</div>
       <div className="visual-board__portrait">
-        <img src={PHOTO_URL} alt="Shubham Kumar" width="760" height="1140" fetchPriority="high" decoding="async" />
+        <img src={PHOTO_URL} alt="Shubham Kumar" width="435" height="521" fetchPriority="high" decoding="async" />
       </div>
       <div className="visual-board__caption">
         <div><small>Engineering profile</small><strong>Shubham Kumar</strong></div>
