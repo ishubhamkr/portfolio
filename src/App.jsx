@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import './styles.css';
+import shubhamPhoto from './shubham_kumar.png';
 
-const PHOTO_URL = `${import.meta.env.BASE_URL}images/shubham_kumar.png`;
+const PHOTO_URL = shubhamPhoto;
 const RESUME_URL = 'https://raw.githubusercontent.com/ishubhamkr/portfolio/refs/heads/main/Shubham_Kumar_Resume.pdf';
 
 const DEVICON = (name, file = `${name}-original.svg`) =>
