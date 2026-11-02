@@ -3383,4 +3383,71 @@ a,
     transition-duration: 0.001ms !important;
   }
 }
-\n\n/* Wide transparent workstation portrait fix */\n.visual-board__portrait {\n  inset: 15% 6% 13% 6%;\n  overflow: visible;\n  border: 0;\n  border-radius: 0;\n  background: transparent;\n  box-shadow: none;\n  transform: none;\n  pointer-events: none;\n}\n\n.visual-board__portrait::before {\n  position: absolute;\n  z-index: -1;\n  inset: 8% 8% 7% 10%;\n  border: 1px solid rgba(255,255,255,.10);\n  border-radius: 30px;\n  background: radial-gradient(circle at 55% 42%, rgba(105,114,255,.20), transparent 48%);\n  content: '';\n}\n\n.visual-board__portrait img {\n  width: 100%;\n  height: 100%;\n  object-fit: contain;\n  object-position: center bottom;\n  filter: drop-shadow(0 28px 32px rgba(0,0,0,.46));\n}\n\n.contact-profile__image {\n  inset: 22px 14px 108px;\n  display: grid;\n  place-items: center;\n}\n\n.contact-profile__image::after {\n  background: radial-gradient(circle at 55% 48%, rgba(105,114,255,.18), transparent 55%);\n}\n\n.contact-profile__image img {\n  width: 100%;\n  height: 100%;\n  object-fit: contain;\n  object-position: center bottom;\n  filter: drop-shadow(0 24px 30px rgba(0,0,0,.42));\n}\n\n@media (max-width: 820px) {\n  .visual-board { aspect-ratio: .84; }\n  .visual-board__portrait { inset: 15% 1% 12% 1%; }\n  .visual-board__portrait::before { inset: 8% 7% 7%; }\n}\n\n@media (max-width: 520px) {\n  .hero-visual { padding-top: 16px; }\n  .visual-board {\n    width: 100%;\n    aspect-ratio: .86;\n    min-height: 430px;\n  }\n  .visual-board__portrait { inset: 16% -2% 12% -2%; }\n  .visual-board__caption { z-index: 10; }\n  .contact-profile { min-height: 520px; }\n  .contact-profile__image { inset: 18px 4px 120px; }\n}\n
+
+
+/* Wide transparent workstation portrait fix */
+.visual-board__portrait {
+  inset: 15% 6% 13% 6%;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  pointer-events: none;
+}
+
+.visual-board__portrait::before {
+  position: absolute;
+  z-index: -1;
+  inset: 8% 8% 7% 10%;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 30px;
+  background: radial-gradient(circle at 55% 42%, rgba(105,114,255,.20), transparent 48%);
+  content: '';
+}
+
+.visual-board__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 28px 32px rgba(0,0,0,.46));
+}
+
+.contact-profile__image {
+  inset: 22px 14px 108px;
+  display: grid;
+  place-items: center;
+}
+
+.contact-profile__image::after {
+  background: radial-gradient(circle at 55% 48%, rgba(105,114,255,.18), transparent 55%);
+}
+
+.contact-profile__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 24px 30px rgba(0,0,0,.42));
+}
+
+@media (max-width: 820px) {
+  .visual-board { aspect-ratio: .84; }
+  .visual-board__portrait { inset: 15% 1% 12% 1%; }
+  .visual-board__portrait::before { inset: 8% 7% 7%; }
+}
+
+@media (max-width: 520px) {
+  .hero-visual { padding-top: 16px; }
+  .visual-board {
+    width: 100%;
+    aspect-ratio: .86;
+    min-height: 430px;
+  }
+  .visual-board__portrait { inset: 16% -2% 12% -2%; }
+  .visual-board__caption { z-index: 10; }
+  .contact-profile { min-height: 520px; }
+  .contact-profile__image { inset: 18px 4px 120px; }
+}
