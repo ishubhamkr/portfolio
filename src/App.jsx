@@ -818,8 +818,7 @@ function ContactPage() {
           <div className="contact-actions"><ButtonLink href={`mailto:${email}`} primary>Start a conversation</ButtonLink><button className="button" type="button" onClick={downloadResume}><span>Download résumé</span><Icon name="download" size={18} /></button></div>
         </section>
 
-        <aside className="contact-profile panel">
-          <div className="contact-profile__image"><img src={PHOTO_URL} alt="Shubham Kumar" /></div>
+        <aside className="about-story__signature about-story__signature--no-photo">
           <div><small>Engineering profile</small><h2>Shubham Kumar</h2><p>Software Engineer Lead · Azure + AI</p><span><Icon name="location" size={15} />Noida, India</span></div>
         </aside>
       </div>

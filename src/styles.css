@@ -3528,3 +3528,19 @@ html, body { overscroll-behavior-y: auto; }
   .project-card, .stack-group, .education-card, .credential-card, .contact-main,
   .contact-profile, .social-card { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
+
+/* About quote signature — no portrait */
+.about-story__signature--no-photo {
+  grid-template-columns: 1fr;
+  padding-left: 0;
+}
+
+.about-story__signature--no-photo > div {
+  min-width: 0;
+}
+
+.about-story__signature--no-photo strong,
+.about-story__signature--no-photo small {
+  position: relative;
+  z-index: 2;
+}
