@@ -3,8 +3,8 @@ import './styles.css';
 import shubhamPhoto from './shubham_kumar.png';
 
 const PHOTO_URL = shubhamPhoto;
-const GITHUB_AVATAR_URL = 'https://github.com/ishubhamkr.png?size=160';
-const RESUME_URL = 'https://raw.githubusercontent.com/ishubhamkr/portfolio/refs/heads/main/Shubham_Kumar_Resume.pdf';
+const HEADER_AVATAR_URL = 'https://assets.leetcode.com/users/dracogeek/avatar_1793534226.png';
+const RESUME_URL = `${import.meta.env.BASE_URL}Shubham_Kumar_Resume.pdf`;
 
 const DEVICON = (name, file = `${name}-original.svg`) =>
   `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${name}/${file}`;
@@ -30,7 +30,7 @@ const MOBILE_NAV_ITEMS = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: 'GitHub', href: 'https://github.com/ishubhamkr', logo: SIMPLE_ICON('github', 'ffffff') },
+  { label: 'GitHub', href: 'https://github.com/ishubhamkr', logo: SIMPLE_ICON('github', '181717') },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/imshubhamkumar', logo: DEVICON('linkedin') },
   { label: 'HackerRank', href: 'https://www.hackerrank.com/_mshubham', logo: SIMPLE_ICON('hackerrank', '00EA64') },
   { label: 'LeetCode', href: 'https://leetcode.com/u/dracogeek/', logo: SIMPLE_ICON('leetcode', 'FFA116') },
@@ -123,50 +123,61 @@ const EARLY_EXPERIENCE = [
 const PROJECTS = [
   {
     number: '01',
-    type: 'Current AI + Azure',
-    title: 'LLM Incident Resolution Copilot',
-    summary: 'An enterprise AI system that reads ServiceNow incidents, retrieves historical context and operational knowledge, and helps engineers develop grounded troubleshooting and resolution steps.',
-    impact: 'Connects LLM reasoning with production context on a secure Azure foundation built for identity, private networking, observability and controlled delivery.',
-    tags: ['LLMs', 'RAG', 'ServiceNow', 'Python', 'FastAPI', 'Azure', 'Terraform'],
+    type: 'AI + Azure',
+    title: 'LLM-Powered Incident Intelligence & Resolution Assistant',
+    summary: 'AI-assisted incident analysis that uses LLM/RAG workflows to analyze ServiceNow incidents and surface relevant operational context for troubleshooting and resolution.',
+    impact: 'Built with Python and FastAPI services plus Azure Functions and App Service components, with Terraform-based private networking and secure identity.',
+    tags: ['LLMs', 'RAG', 'Python', 'FastAPI', 'ServiceNow', 'Azure Functions', 'App Service', 'Terraform', 'Private Networking'],
     icon: 'spark',
     visual: 'incident',
-    status: 'Private enterprise build',
+    status: 'Enterprise AI project',
     featured: true,
   },
   {
     number: '02',
+    type: 'AI Knowledge Retrieval',
+    title: 'AI Digital Security Chatbot',
+    summary: 'A FastAPI assistant that indexes engineering repositories and answers security and engineering questions using context-aware retrieval.',
+    impact: 'Applies RAG and LLM workflows to improve discovery of technical knowledge across engineering repositories.',
+    tags: ['Python', 'FastAPI', 'RAG', 'LLMs', 'AI Agents', 'Semantic Search'],
+    icon: 'bot',
+    visual: 'report',
+    status: 'Engineering AI assistant',
+  },
+  {
+    number: '03',
+    type: 'Agentic Automation',
+    title: 'AI Allure Report Agent',
+    summary: 'An AI agent built with FastAPI to analyze Allure test reports and generate actionable summaries for stakeholders after test execution.',
+    impact: 'Turns automated test output into concise stakeholder-ready summaries after execution.',
+    tags: ['Python', 'FastAPI', 'AI Agents', 'Automation', 'Allure'],
+    icon: 'bot',
+    visual: 'report',
+    status: 'Engineering automation',
+  },
+  {
+    number: '04',
     type: 'Enterprise Security',
     title: 'Digital Security for Provider Portal',
-    summary: 'Authorization and organization-access workflows for a large provider platform, including secure user management and TIN registration journeys.',
-    impact: 'Supported workflows serving 1.4M+ users and approximately 1.2B annual transactions.',
-    tags: ['Java', 'Spring Boot', 'React', 'MongoDB', 'JWT', 'Kafka', 'Vault'],
+    summary: 'Authorization workflows supporting systems used by 1.4M+ users, including APIs for authorization, organization access and TIN registration.',
+    impact: 'Implemented secure access controls using Spring Security, JWT and HashiCorp Vault.',
+    tags: ['Java', 'Spring Boot', 'React.js', 'MongoDB', 'Kafka', 'REST APIs', 'Spring Security', 'JWT'],
     icon: 'shield',
     visual: 'security',
     href: 'https://apps.uhcprovider.com/digital-security/#',
     linkLabel: 'Open product',
   },
   {
-    number: '03',
+    number: '05',
     type: 'Provider Platform',
-    title: 'Enhanced Provider Validation Portal',
-    summary: 'Provider registration and validation workflows built with Spring Boot and React, including document submission, REST integrations and Kafka-based tracking.',
-    impact: 'Improved registration visibility and verification workflows for organizations outside direct network relationships.',
-    tags: ['Spring Boot', 'React', 'MongoDB', 'REST APIs', 'Kafka', 'Pega'],
+    title: 'Enhanced Provider Validation (EPV) Portal',
+    summary: 'Provider-registration and validation workflows using Spring Boot, React.js, REST APIs, MongoDB, document submission and Kafka-based tracking.',
+    impact: 'Built a full-stack workflow for provider registration, validation and tracking.',
+    tags: ['Java', 'Spring Boot', 'React.js', 'MongoDB', 'Kafka', 'REST APIs', 'Pega'],
     icon: 'workflow',
     visual: 'workflow',
     href: 'https://apps.uhcprovider.com/outofnetwork/#/',
     linkLabel: 'Open product',
-  },
-  {
-    number: '04',
-    type: 'Agentic Automation',
-    title: 'AI Allure Report Agent',
-    summary: 'An AI agent that interprets Allure test execution reports and automatically produces detailed, actionable stakeholder summaries after test runs.',
-    impact: 'Reduces manual reporting effort and shortens the feedback loop between test execution and action.',
-    tags: ['FastAPI', 'Python', 'AI Agents', 'Automation', 'Reporting'],
-    icon: 'bot',
-    visual: 'report',
-    status: 'Engineering automation',
   },
 ];
 
@@ -320,22 +331,14 @@ function readRoute() {
   return NAV_ITEMS.some((item) => item.id === value) ? value : 'home';
 }
 
-async function downloadResume() {
-  try {
-    const response = await fetch(RESUME_URL);
-    if (!response.ok) throw new Error('Resume fetch failed');
-    const blob = await response.blob();
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Shubham_Kumar_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-  } catch {
-    window.open(RESUME_URL, '_blank', 'noopener,noreferrer');
-  }
+function downloadResume() {
+  const link = document.createElement('a');
+  link.href = RESUME_URL;
+  link.download = 'Shubham_Kumar_Resume.pdf';
+  link.rel = 'noopener';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
 }
 
 function Icon({ name, size = 20, strokeWidth = 1.8, className = '' }) {
@@ -382,48 +385,19 @@ function Icon({ name, size = 20, strokeWidth = 1.8, className = '' }) {
 }
 
 
-function LanguageMark({ name }) {
-  const common = { viewBox: '0 0 64 64', role: 'img', 'aria-label': name };
-  if (name === 'Java') return (
-    <svg {...common} className="language-mark language-mark--java">
-      <path d="M22 42c7 4 21 4 28-1M20 35c8 4 22 4 30-1M24 49c6 3 18 3 24 0" />
-      <path d="M29 27c-6 5 4 7 2 12M36 17c-8 6 6 8 0 14M42 11c-7 6 4 7 0 12" />
-      <path d="M17 31c2 15 7 21 18 21s16-6 18-21" />
-    </svg>
-  );
-  if (name === 'Python') return (
-    <svg {...common} className="language-mark language-mark--python">
-      <path d="M14 29V18c0-7 5-11 12-11h8c7 0 10 4 10 10v12H25c-7 0-11 4-11 10v4" />
-      <path d="M50 35v11c0 7-5 11-12 11h-8c-7 0-10-4-10-10V35h19c7 0 11-4 11-10v-4" />
-      <circle cx="26" cy="16" r="2.2" fill="currentColor" stroke="none" />
-      <circle cx="38" cy="48" r="2.2" fill="currentColor" stroke="none" />
-    </svg>
-  );
-  if (name === 'C++') return (
-    <svg {...common} className="language-mark language-mark--cpp">
-      <path d="M32 7 52 18v28L32 57 12 46V18L32 7Z" />
-      <path d="M36 24c-2-3-5-5-9-5-7 0-12 5-12 13s5 13 12 13c4 0 7-2 9-5" />
-      <path d="M39 29h12M45 23v12M42 38h10M47 33v10" />
-    </svg>
-  );
-  if (name === 'JavaScript') return (
-    <svg {...common} className="language-mark language-mark--js">
-      <rect x="8" y="8" width="48" height="48" rx="8" />
-      <path d="M31 25v17c0 5-3 8-8 8-3 0-5-1-7-3M48 28c-2-2-4-3-7-3-4 0-7 2-7 5 0 4 3 5 7 6 4 1 7 2 7 6 0 4-3 7-8 7-4 0-7-1-9-4" />
-    </svg>
-  );
-  return (
-    <svg {...common} className="language-mark language-mark--sql">
-      <ellipse cx="32" cy="15" rx="18" ry="8" />
-      <path d="M14 15v14c0 4 8 8 18 8s18-4 18-8V15M14 29v14c0 4 8 8 18 8s18-4 18-8V29" />
-    </svg>
-  );
-}
 
-function Logo({ src, alt, fallback }) {
+function Logo({ src, alt, fallback, eager = false }) {
   const [failed, setFailed] = useState(false);
   if (failed || !src) return <span className="logo-fallback" aria-label={alt}>{fallback || alt.slice(0, 2).toUpperCase()}</span>;
-  return <img src={src} alt={alt} loading="lazy" decoding="async" referrerPolicy="no-referrer" onError={() => setFailed(true)} />;
+  return <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" referrerPolicy="no-referrer" onError={() => setFailed(true)} />;
+}
+
+function GitHubMark() {
+  return (
+    <svg className="github-mark" viewBox="0 0 24 24" role="img" aria-label="GitHub">
+      <path fill="currentColor" d="M12 .7A11.3 11.3 0 0 0 8.4 22.7c.6.1.8-.2.8-.6v-2.2c-3.4.7-4.1-1.4-4.1-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2A11.5 11.5 0 0 1 12 6.3c1 0 2 .1 3 .4 2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.3 11.3 0 0 0 12 .7Z" />
+    </svg>
+  );
 }
 
 function AmbientBackground() {
@@ -456,7 +430,7 @@ function Header({ route, menuOpen, setMenuOpen }) {
       <header className="site-header">
         <a className="brand" href="#/home" aria-label="Shubham Kumar home">
           <span className="brand__avatar-wrap">
-            <img className="brand__avatar" src={PHOTO_URL} alt="Shubham Kumar" width="96" height="96" />
+            <img className="brand__avatar" src={HEADER_AVATAR_URL} alt="Shubham Kumar" width="96" height="96" referrerPolicy="no-referrer" onError={(event) => { event.currentTarget.src = PHOTO_URL; }} />
             <span className="brand__avatar-ring" aria-hidden="true" />
           </span>
           <span className="brand__copy">
@@ -774,9 +748,15 @@ function StackPage() {
             <small>Core engineering foundation</small>
           </div>
           <div className="language-orbit__track">
-            {['Java', 'Python', 'C++', 'JavaScript', 'SQL'].map((language, index) => (
+            {[
+              ['Java', DEVICON('java')],
+              ['Python', DEVICON('python')],
+              ['C++', DEVICON('cplusplus')],
+              ['JavaScript', DEVICON('javascript')],
+              ['SQL', DEVICON('azuresqldatabase')],
+            ].map(([language, logo], index) => (
               <span className={`language-orbit__node language-orbit__node--${index + 1}`} key={language}>
-                <span className="language-orbit__node-inner"><LanguageMark name={language} /><small>{language}</small></span>
+                <span className="language-orbit__node-inner" style={{ '--node-counter-angle': `${-index * 72}deg` }}><Logo src={logo} alt={`${language} logo`} fallback={language === 'JavaScript' ? 'JS' : language} eager /><small>{language}</small></span>
               </span>
             ))}
           </div>
@@ -882,7 +862,7 @@ function ContactPage() {
       </div>
 
       <div className="social-grid">
-        {SOCIAL_LINKS.map((link) => <a className="social-card panel" key={link.label} href={link.href} target="_blank" rel="noreferrer"><i><Logo src={link.logo} alt={link.label} fallback={link.label.slice(0, 1)} /></i><span><small>Find me on</small><strong>{link.label}</strong></span><Icon name="external" size={18} /></a>)}
+        {SOCIAL_LINKS.map((link) => <a className="social-card panel" key={link.label} href={link.href} target="_blank" rel="noreferrer"><i>{link.label === 'GitHub' ? <GitHubMark /> : <Logo src={link.logo} alt={link.label} fallback={link.label.slice(0, 1)} />}</i><span><small>Find me on</small><strong>{link.label}</strong></span><Icon name="external" size={18} /></a>)}
       </div>
     </PageShell>
   );
