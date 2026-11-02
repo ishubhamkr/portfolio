@@ -39,7 +39,7 @@ html {
   min-width: 320px;
   min-height: 100%;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   background: var(--bg);
 }
 
@@ -3450,4 +3450,81 @@ a,
   .visual-board__caption { z-index: 10; }
   .contact-profile { min-height: 520px; }
   .contact-profile__image { inset: 18px 4px 120px; }
+}
+
+
+/* Performance + motion pass */
+html, body { overscroll-behavior-y: auto; }
+
+/* Keep entrance motion GPU-friendly without tying anything to scroll. */
+.home-page,
+.page {
+  animation: page-in 460ms cubic-bezier(.2,.8,.2,1) both;
+  will-change: opacity, transform;
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translate3d(0, 18px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.hero-copy > *,
+.hero-visual,
+.hero-stats,
+.hero-marquee,
+.page-head,
+.about-story,
+.capability-card,
+.principle-card,
+.timeline-item,
+.project-card,
+.stack-group,
+.education-card,
+.credential-card,
+.contact-main,
+.contact-profile,
+.social-card {
+  animation: content-rise 560ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.hero-copy > :nth-child(2) { animation-delay: 45ms; }
+.hero-copy > :nth-child(3) { animation-delay: 90ms; }
+.hero-copy > :nth-child(4) { animation-delay: 135ms; }
+.hero-copy > :nth-child(5) { animation-delay: 180ms; }
+.hero-visual { animation-delay: 100ms; }
+.hero-stats { animation-delay: 190ms; }
+.hero-marquee { animation-delay: 230ms; }
+
+@keyframes content-rise {
+  from { opacity: 0; transform: translate3d(0, 14px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Reduce expensive compositing during normal scrolling. */
+@media (max-width: 1180px) {
+  .site-header,
+  .mobile-menu,
+  .mobile-dock,
+  .visual-chip,
+  .hero-stats {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .ambient__mesh { filter: blur(42px); }
+}
+
+@media (max-width: 820px) {
+  .ambient__stars,
+  .ambient__beam,
+  .visual-board__monogram { display: none; }
+  .ambient__mesh { animation: none; filter: blur(34px); }
+  .visual-chip { animation: none; }
+  .hero-marquee__track { animation-duration: 34s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page, .page, .hero-copy > *, .hero-visual, .hero-stats, .hero-marquee,
+  .page-head, .about-story, .capability-card, .principle-card, .timeline-item,
+  .project-card, .stack-group, .education-card, .credential-card, .contact-main,
+  .contact-profile, .social-card { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
