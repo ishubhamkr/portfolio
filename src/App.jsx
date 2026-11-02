@@ -3,6 +3,7 @@ import './styles.css';
 import shubhamPhoto from './shubham_kumar.png';
 
 const PHOTO_URL = shubhamPhoto;
+const GITHUB_AVATAR_URL = 'https://github.com/ishubhamkr.png?size=160';
 const RESUME_URL = 'https://raw.githubusercontent.com/ishubhamkr/portfolio/refs/heads/main/Shubham_Kumar_Resume.pdf';
 
 const DEVICON = (name, file = `${name}-original.svg`) =>
@@ -415,8 +416,10 @@ function Header({ route, menuOpen, setMenuOpen }) {
     <>
       <header className="site-header">
         <a className="brand" href="#/home" aria-label="Shubham Kumar home">
-          <span className="brand__shadow" aria-hidden="true" />
-          <span className="brand__mark">SK</span>
+          <span className="brand__avatar-wrap">
+            <img className="brand__avatar" src={GITHUB_AVATAR_URL} alt="Shubham Kumar GitHub profile" width="96" height="96" />
+            <span className="brand__avatar-ring" aria-hidden="true" />
+          </span>
           <span className="brand__copy">
             <strong>Shubham Kumar</strong>
             <small>Azure + AI engineering</small>
@@ -501,7 +504,8 @@ function VisualBoard() {
         <em>AZURE × AI</em>
       </div>
       <div className="visual-board__grid" />
-      <div className="visual-board__monogram" aria-hidden="true">SK</div>
+      <div className="visual-board__scan" aria-hidden="true" />
+      <div className="visual-board__scanner" aria-hidden="true" />
       <div className="visual-board__status"><i />Production systems</div>
       <div className="visual-board__portrait">
         <img src={PHOTO_URL} alt="Shubham Kumar" width="435" height="521" fetchPriority="high" decoding="async" />
@@ -595,8 +599,7 @@ function AboutPage() {
           <div className="story-card__quote">“</div>
           <p>I work across the full system: the LLM workflow, Python and FastAPI services, Azure Functions and Web Apps, identity, networking, Terraform, CI/CD and the production signals that keep everything dependable.</p>
           <p>My goal is straightforward: transform complex enterprise context into software that feels clear, secure and genuinely helpful to the people operating it.</p>
-          <div className="story-card__signature">
-            <img src={PHOTO_URL} alt="" />
+          <div className="story-card__signature story-card__signature--text-only">
             <div><strong>Shubham Kumar</strong><small>Software Engineer Lead · Azure + AI</small></div>
           </div>
         </article>
@@ -818,7 +821,8 @@ function ContactPage() {
           <div className="contact-actions"><ButtonLink href={`mailto:${email}`} primary>Start a conversation</ButtonLink><button className="button" type="button" onClick={downloadResume}><span>Download résumé</span><Icon name="download" size={18} /></button></div>
         </section>
 
-        <aside className="about-story__signature about-story__signature--no-photo">
+        <aside className="contact-profile panel">
+          <div className="contact-profile__image"><img src={PHOTO_URL} alt="Shubham Kumar" /></div>
           <div><small>Engineering profile</small><h2>Shubham Kumar</h2><p>Software Engineer Lead · Azure + AI</p><span><Icon name="location" size={15} />Noida, India</span></div>
         </aside>
       </div>
